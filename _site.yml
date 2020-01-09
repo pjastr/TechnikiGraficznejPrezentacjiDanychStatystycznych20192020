@@ -1,0 +1,11 @@
+name: "Techniki-graficznej-prezentacji-danych-statystycznych"
+output_dir: "."
+navbar:
+  title: "Techniki graficznej prezentacji danych statystycznych"
+  left:
+    - text: "Strona główna"
+      href: index.html
+    - text: "Dzień 1"
+      menu:
+        - text: "Sprawy organizacyjne"
+          href: sprawyorganizacyjne.html
