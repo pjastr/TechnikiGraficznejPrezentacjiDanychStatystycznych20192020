@@ -1,10 +1,7 @@
 ---
 title: "Techniki graficznej prezentacji danych statystycznych"
-header-includes:
-  - \usepackage[polish]{babel}
 output:
   html_document: default
-  pdf_document: default
 ---
 <style type="text/css">
 .title {
@@ -21,8 +18,6 @@ output:
 <div class="col-sm-6">
 
 # Techniki graficznej prezentacji danych statystycznych
-
-[Wersja pdf](index.pdf)
 
 Strona zawierały materiały przygotowane na przedmiot "Techniki graficznej prezentacji danych statystycznych" realizowanego w ramach studiów podyplomowych "Zaawansowane Metody Analizy Danych i Data Mining w Biznesie" na WMiI UWM w Olsztynie.
 
