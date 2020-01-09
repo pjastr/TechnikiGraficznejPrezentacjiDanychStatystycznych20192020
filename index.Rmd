@@ -1,0 +1,36 @@
+---
+title: "Techniki graficznej prezentacji danych statystycznych"
+header-includes:
+  - \usepackage[polish]{babel}
+output:
+  html_document: default
+  pdf_document: default
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+<div class="row" style="padding-top: 30px;">
+<div class="col-sm-6">
+
+# Techniki graficznej prezentacji danych statystycznych
+
+[Wersja pdf](index.pdf)
+
+Strona zawierały materiały przygotowane na przedmiot "Techniki graficznej prezentacji danych statystycznych" realizowanego w ramach studiów podyplomowych "Zaawansowane Metody Analizy Danych i Data Mining w Biznesie" na WMiI UWM w Olsztynie.
+
+Opracowanie materiałów: dr Piotr Jastrzębski
+
+Strona domowa http://wmii.uwm.edu.pl/~piojas/
+
+</div>
+<div class="col-sm-6">
+
+![](grafika.jpg)
