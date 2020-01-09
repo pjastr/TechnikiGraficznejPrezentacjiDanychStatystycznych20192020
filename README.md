@@ -1,0 +1,1 @@
+# -TechnikiGraficznejPrezentacjiDanychStatystycznych20192020
