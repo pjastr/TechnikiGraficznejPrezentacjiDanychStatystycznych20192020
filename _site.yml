@@ -9,3 +9,26 @@ navbar:
       menu:
         - text: "Sprawy organizacyjne"
           href: sprawyorganizacyjne.html
+        - text: "Podstawy"
+          href: podstawy.html
+        - text: "plot a tabela"
+          href: plottabela.html
+        - text: "Tytuł"
+          href: tytul.html
+        - text: "Dodatkowe linie"
+          href: linie.html
+        - text: "Dodatkowe punkty i teksty"
+          href: punkttekst.html
+        - text: "Legenda"
+          href: legenda.html
+        - text: "Wykres słupkowy"
+          href: wykreslupkowy.html
+        - text: "Histogram"
+          href: histogram.html
+        - text: "Wykres kołowy"
+          href: wykreskolowy.html
+        - text: "Wykres kropkowy"
+          href: wykreskropkowy.html
+        - text: "Osie"
+          href: osie.html
+

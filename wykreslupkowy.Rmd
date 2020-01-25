@@ -1,0 +1,92 @@
+---
+title: "Dzień 1 - Wykres słupkowy"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Wykres słupkowy - bar chart
+
+```{r}
+urlopy<- c(23,3,4,15,8)
+barplot(urlopy)
+```
+
+Parametry: `names.arg` - nazwy argumentów, `border` - kolor brzegu, `density` - wypełnienie.
+
+```{r}
+urlopy<- c(23,3,4,15,8)
+barplot(urlopy, main="Urlopy", xlab="Miesiące",  
+   ylab="Łącznie", names.arg=c("Sty","Lut","Mar","Kwi","Maj"), 
+   border="pink", density=c(10,40,30,20,50))
+```
+
+Parametr `horiz=TRUE` zmienia orientację na poziomą.
+
+```{r}
+urlopy<- c(23,3,4,15,8)
+barplot(urlopy, main="Urlopy", xlab="Miesiące",  
+   ylab="Łącznie", names.arg=c("Sty","Lut","Mar","Kwi","Maj"), 
+   border="pink", density=c(10,40,30,20,50), horiz=TRUE)
+```
+
+Parametr `beside=TRUE` dodaje grupowanie danych (w tym wypadku po kolumnach). `bty` - typ obramowania (tutaj legendy, `n`-brak, `o`- dookoła).
+
+```{r}
+urlopy<- matrix( c(2, 4, 8, 1,4, 5, 7,11,3,24,12,9), nrow=4, ncol=3)
+urlopy
+barplot(urlopy, main="Urlopy", ylab= "Razem",
+   beside=TRUE, col=rainbow(4))
+legend("topleft", c("1Q","2Q","3Q","4Q"), cex=0.6, 
+   bty="n", fill=rainbow(4))
+```
+
+Wykres słupkowy na podstawie macierzy. `space` - odstęp między słupkami.
+```{r}
+barplot(urlopy, main="Urlopy", ylab="Razem", 
+   col=heat.colors(4), space=0.1, cex.axis=0.8, las=1,
+   names.arg=c("A","B","C"), cex=0.8)
+legend("top", c("1Q","2Q","3Q","4Q"), cex=0.8, fill=heat.colors(4));
+
+```{r}
+urlopy<- c(23,3,4,15,8)
+barplot(urlopy, main="Urlopy", xlab="Miesiące",  
+   ylab="Łącznie", names.arg=c("Sty","Lut","Mar","Kwi","Maj"), 
+   border="pink", density=c(10,40,30,20,50))
+```
+
+```{r}
+urlopy<- matrix( c(2, 4, 8, 1,4, 5, 7,11,3,24,12,9), nrow=3, ncol=4)
+barplot(urlopy, main="Urlopy", ylab= "Razem",
+   beside=TRUE, col=rainbow(5))
+legend("topleft", c("1Q","2Q","3Q","4Q"), cex=0.6, 
+   bty="n", fill=rainbow(5));
+```
+
+```{r}
+urlopy<- matrix( c(2, 4, 8, 1,4, 5, 7,11,3,24,12,9), nrow=3, ncol=4)
+barplot(t(urlopy), main="Urlopy", ylab="Razem", 
+   col=heat.colors(3), space=0.1, cex.axis=0.8, las=1,
+   names.arg=c("A","B","C"), cex=0.8)
+legend("top", c("1Q","2Q","3Q","4Q"), cex=0.8, fill=heat.colors(3));
+```

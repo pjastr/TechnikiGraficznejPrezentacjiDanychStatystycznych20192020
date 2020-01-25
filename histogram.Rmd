@@ -1,0 +1,62 @@
+---
+title: "Dzień 1 - Histogram"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Histogram
+
+```{r}
+urlopy<- c(23,3,4,15,8)
+hist(urlopy)
+```
+
+Parametr `prob = TRUE` odpowiada za wyświetlanie gęstości a nie liczebności.
+
+```{r}
+x<-rnorm(1000)
+hist(x, prob = TRUE)
+lines(density(x), xlab="", ylab="", main="")
+```
+
+`breaks` określa punkty podziałów. Może być liczbą (ale zaokrąglenie do "piątek").
+```{r}
+hist(AirPassengers, main="Pasażerowie linii lotniczych", xlab="Pasażerowie", 
+     border="blue", col="red", xlim=c(100,700), las=1, 
+     breaks=9)
+```
+
+Druga opcja to podanie wektora. Ale ostrożnie. 
+
+```{r}
+hist(AirPassengers, main="Pasażerowie linii lotniczych", xlab="Pasażerowie", 
+     border="blue", col="red", xlim=c(100,700), las=1, 
+     breaks=c(100,300,400,500,650))
+```
+
+```{r}
+hist(AirPassengers, main="Pasażerowie linii lotniczych", xlab="Pasażerowie", 
+     border="blue", col="red", xlim=c(100,700), las=1, 
+     breaks=c(100,300,500,700))
+```

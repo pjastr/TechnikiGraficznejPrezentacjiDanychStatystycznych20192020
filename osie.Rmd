@@ -1,0 +1,69 @@
+---
+title: "Dzień 1 - Osie"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Osie
+
+## Funkcja `axis`
+
+Komentarz: pierwszy parametr `axis` określa położenie osi: 1- dół, 2- lewa strona, 3 - góra, 4 - prawa strona.
+
+```{r}
+a<-c(1,2,3,4,5,6,7)
+b<-c(23,3,2,4,5,2,-2)
+plot(a,b,axes=FALSE,type="o",col="blue",ann=FALSE)
+axis(4, las=1, at=10*0:range(b)[2])
+axis(3, at=1:7, lab=c("Pn","Wt","Śr","Czw","Pt","So","Nd"))
+box()
+```
+
+
+
+## Parametr `at` - kontrola nad podziałką
+Jeśli w parametrze `at` chcemy mieć kontrolę nad tym co będzie, możemy dodać tam ręcznie konkretny wektor. Ale musimy pamiętać o marginesach.
+```{r}
+a<-c(1,2,3,4,5,6,7)
+b<-c(23,3,2,4,5,2,-2)
+plot(a,b,axes=FALSE,type="o",col="blue",ann=FALSE)
+axis(2, las=1, at=c(0,5,17,20,23))
+axis(1, at=1:7, lab=c("Pn","Wt","Śr","Czw","Pt","So","Nd"))
+box()
+```
+
+## Wykresy dwuosiowe
+Wykresy dwuosiowe należy stosować z dużą rozwagą. Najprościej użyć parametru `new` ustawionego na `TRUE`. Parametry `xaxt` i `yaxt` dotyczą odpowienich podziałek na osiach. Przykładowo:
+
+```{r}
+x<-c(1,2,3,4,5)
+y1<-c(5,4,6,7,4)
+y2<-c(100,101,103,99,98)
+plot(x,y1,type="l",col="red")
+par(new=TRUE)
+plot(x, y2,,type="l",col="blue",xaxt="n", yaxt="n",xlab="",ylab="")
+axis(4)
+legend("topleft",col=c("red","blue"),lty=1,legend=c("y1","y2"))
+```
+

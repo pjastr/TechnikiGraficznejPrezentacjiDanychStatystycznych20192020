@@ -1,0 +1,43 @@
+---
+title: "Dzień 1 - `plot` a tabela"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# `plot` a tabela
+
+Jeśli użyjemy `plot` na tabeli (w której mamy szereg rozdzielczy), to otrzymamy nieco inny wykres.
+```{r}
+plot(table(mtcars$cyl))
+```
+
+```{r}
+duration = faithful$eruptions
+breaks = seq(1.5, 5.5, by=0.5)
+duration.cut = cut(duration, breaks, right=FALSE)
+duration.freq = table(duration.cut)
+plot(duration.freq)
+```
+
+*Ćwiczenie:* poćwicz różne parametry do funkcji.

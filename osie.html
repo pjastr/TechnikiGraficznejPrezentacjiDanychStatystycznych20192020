@@ -11,7 +11,7 @@
 
 
 
-<title>Techniki graficznej prezentacji danych statystycznych</title>
+<title>Dzień 1 - Osie</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -248,6 +251,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -255,6 +327,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -331,7 +413,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Techniki graficznej prezentacji danych statystycznych</h1>
+<h1 class="title toc-ignore">Dzień 1 - Osie</h1>
 
 </div>
 
@@ -341,25 +423,58 @@ $(document).ready(function () {
   display: none;
 }
 
+.table {
+    width:70%;
+}
+
 #getting-started img {
   margin-right: 10px;
 }
 
 </style>
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
-<h1 id="techniki-graficznej-prezentacji-danych-statystycznych">Techniki graficznej prezentacji danych statystycznych</h1>
-<p>Strona zawierały materiały przygotowane na przedmiot “Techniki graficznej prezentacji danych statystycznych” realizowanego w ramach studiów podyplomowych “Zaawansowane Metody Analizy Danych i Data Mining w Biznesie” na WMiI UWM w Olsztynie.</p>
-<p>Opracowanie materiałów: dr Piotr Jastrzębski</p>
-<p><strong>Rok akademicki: 2019/2020.</strong></p>
-<p>Strona domowa <a href="http://wmii.uwm.edu.pl/~piojas/" class="uri">http://wmii.uwm.edu.pl/~piojas/</a></p>
+<div id="osie" class="section level1">
+<h1>Osie</h1>
+<div id="funkcja-axis" class="section level2">
+<h2>Funkcja <code>axis</code></h2>
+<p>Komentarz: pierwszy parametr <code>axis</code> określa położenie osi: 1- dół, 2- lewa strona, 3 - góra, 4 - prawa strona.</p>
+<pre class="r"><code>a&lt;-c(1,2,3,4,5,6,7)
+b&lt;-c(23,3,2,4,5,2,-2)
+plot(a,b,axes=FALSE,type=&quot;o&quot;,col=&quot;blue&quot;,ann=FALSE)
+axis(4, las=1, at=10*0:range(b)[2])
+axis(3, at=1:7, lab=c(&quot;Pn&quot;,&quot;Wt&quot;,&quot;Śr&quot;,&quot;Czw&quot;,&quot;Pt&quot;,&quot;So&quot;,&quot;Nd&quot;))
+box()</code></pre>
+<p><img src="osie_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
-<div class="col-sm-6">
+<div id="parametr-at---kontrola-nad-podziałką" class="section level2">
+<h2>Parametr <code>at</code> - kontrola nad podziałką</h2>
+<p>Jeśli w parametrze <code>at</code> chcemy mieć kontrolę nad tym co będzie, możemy dodać tam ręcznie konkretny wektor. Ale musimy pamiętać o marginesach.</p>
+<pre class="r"><code>a&lt;-c(1,2,3,4,5,6,7)
+b&lt;-c(23,3,2,4,5,2,-2)
+plot(a,b,axes=FALSE,type=&quot;o&quot;,col=&quot;blue&quot;,ann=FALSE)
+axis(2, las=1, at=c(0,5,17,20,23))
+axis(1, at=1:7, lab=c(&quot;Pn&quot;,&quot;Wt&quot;,&quot;Śr&quot;,&quot;Czw&quot;,&quot;Pt&quot;,&quot;So&quot;,&quot;Nd&quot;))
+box()</code></pre>
+<p><img src="osie_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="wykresy-dwuosiowe" class="section level2">
+<h2>Wykresy dwuosiowe</h2>
+<p>Wykresy dwuosiowe należy stosować z dużą rozwagą. Najprościej użyć parametru <code>new</code> ustawionego na <code>TRUE</code>. Parametry <code>xaxt</code> i <code>yaxt</code> dotyczą odpowienich podziałek na osiach. Przykładowo:</p>
+<pre class="r"><code>x&lt;-c(1,2,3,4,5)
+y1&lt;-c(5,4,6,7,4)
+y2&lt;-c(100,101,103,99,98)
+plot(x,y1,type=&quot;l&quot;,col=&quot;red&quot;)
+par(new=TRUE)
+plot(x, y2,,type=&quot;l&quot;,col=&quot;blue&quot;,xaxt=&quot;n&quot;, yaxt=&quot;n&quot;,xlab=&quot;&quot;,ylab=&quot;&quot;)
+axis(4)
+legend(&quot;topleft&quot;,col=c(&quot;red&quot;,&quot;blue&quot;),lty=1,legend=c(&quot;y1&quot;,&quot;y2&quot;))</code></pre>
+<p><img src="osie_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+</div>
 
-<p><img src="grafika.jpg" /></p>
 
 
-
+</div>
+</div>
 
 </div>
 
@@ -392,6 +507,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

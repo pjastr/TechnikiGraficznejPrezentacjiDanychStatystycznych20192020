@@ -11,7 +11,7 @@
 
 
 
-<title>Techniki graficznej prezentacji danych statystycznych</title>
+<title>Dzień 1 - Podstawy</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -248,6 +251,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -255,6 +327,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -331,7 +413,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Techniki graficznej prezentacji danych statystycznych</h1>
+<h1 class="title toc-ignore">Dzień 1 - Podstawy</h1>
 
 </div>
 
@@ -341,25 +423,78 @@ $(document).ready(function () {
   display: none;
 }
 
+.table {
+    width:70%;
+}
+
 #getting-started img {
   margin-right: 10px;
 }
 
 </style>
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
-<h1 id="techniki-graficznej-prezentacji-danych-statystycznych">Techniki graficznej prezentacji danych statystycznych</h1>
-<p>Strona zawierały materiały przygotowane na przedmiot “Techniki graficznej prezentacji danych statystycznych” realizowanego w ramach studiów podyplomowych “Zaawansowane Metody Analizy Danych i Data Mining w Biznesie” na WMiI UWM w Olsztynie.</p>
-<p>Opracowanie materiałów: dr Piotr Jastrzębski</p>
-<p><strong>Rok akademicki: 2019/2020.</strong></p>
-<p>Strona domowa <a href="http://wmii.uwm.edu.pl/~piojas/" class="uri">http://wmii.uwm.edu.pl/~piojas/</a></p>
+<div id="podstawy" class="section level1">
+<h1>Podstawy</h1>
+<div id="wykres---plot" class="section level2">
+<h2>Wykres - plot</h2>
+<p>Funkcja <code>plot</code> w podstawowej wersji służy do generowania/rysowania wykresów.</p>
+<p>Opis w dokumentacji - <a href="https://www.rdocumentation.org/packages/graphics/versions/3.5.1/topics/plot">link</a></p>
+<p>Ściągawka - <a href="http://www.gastonsanchez.com/visually-enforced/resources/2015/09/22/R-cheat-sheet-graphical-parameters/">link</a></p>
+<p><img src="rys1.png" /></p>
+<pre class="r"><code>wzrost &lt;- c(145, 167, 178, 124, 150)
+waga &lt;- c(51, 68, 64, 43, 57)
+plot(wzrost,waga)</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Zróbmy linię:</p>
+<pre class="r"><code>wzrost &lt;- c(145, 167, 178, 124, 150)
+waga &lt;- c(51, 68, 64, 43, 57)
+plot(wzrost,waga, type = &quot;l&quot;)</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Ważne jest uporządkowanie danych.</p>
+<pre class="r"><code>wzrost &lt;- c(124, 145, 150, 167, 178)
+waga &lt;- c(43, 51, 57, 68, 64)
+plot(wzrost,waga,type = &quot;l&quot;)</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Różne typy do wpisania:</p>
+<p><img src="rys8.png" /></p>
+<p>Jeśli chcemy narysować wykres funkcji, to najpierw musi stworzyć wektor argumentów (odciętych).</p>
+<pre class="r"><code>x &lt;- seq(-2*pi,2*pi,0.1)
+plot(x, sin(x))</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Przykład użycia różnych parametrów:</p>
+<p><img src="rys3.png" /></p>
+<pre class="r"><code>x &lt;- seq(-2*pi,2*pi,0.1)
+plot(x, sin(x), main=&quot;Wykres sinus- tytuł&quot;,sub=&quot;a tu jakiś podtytuł&quot;,xlab=&quot;tu mamy x&quot;,ylab=&quot;tu mamy sinus&quot;,type=&quot;l&quot;,col=&quot;blue&quot;)</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>x &lt;- seq(-2*pi,2*pi,0.1)
+plot(x, sin(x),type=&quot;l&quot;,xlim=c(0,2*pi), ylim=c(-0.5,0.5))</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Lista wbudowanych kolorów to funkcja <code>colors()</code>. Użycie kolorów w systemie hex możliwe jest poprzez <code>#AA4371</code>. Jeśli mamy wartość rgb, możemy ją zmienić na poprzez polecenie <code>rgb</code>.</p>
+<pre class="r"><code>x &lt;- seq(-2*pi,2*pi,0.1)
+plot(x, sin(x), col=&quot;#AA4371&quot;)</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>x &lt;- seq(-2*pi,2*pi,0.1)
+plot(x, sin(x), col=rgb(34,22,25,max=255))</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
-<div class="col-sm-6">
+<div id="plot---ćwiczenia" class="section level2">
+<h2><code>Plot</code> - ćwiczenia</h2>
+<ol style="list-style-type: decimal">
+<li>Narysuj wykresy przykładowych funkcji, dopisz osie. Poćwicz różne kombinacje.</li>
+<li>Zrób wykres wybierając dwie kolumny ze zbioru <code>mtcars</code>.</li>
+</ol>
+</div>
+<div id="plot-a-jeden-wektor" class="section level2">
+<h2><code>plot</code> a jeden wektor</h2>
+<pre class="r"><code>x&lt;-c(3,4,5)
+plot(x)</code></pre>
+<p><img src="podstawy_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>
 
-<p><img src="grafika.jpg" /></p>
 
 
-
+</div>
+</div>
 
 </div>
 
@@ -392,6 +527,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
