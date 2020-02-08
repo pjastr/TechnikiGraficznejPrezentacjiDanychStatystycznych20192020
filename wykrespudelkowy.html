@@ -508,14 +508,18 @@ wykres&lt;-boxplot(x)</code></pre>
 ##  Mean   :4.7  
 ##  3rd Qu.:7.0  
 ##  Max.   :8.0</code></pre>
+<p>Alternatywnie można pozbyć się wartości skrajnych:</p>
+<pre class="r"><code>x&lt;-c(3,4,5,6,7,8,1,2,3,14)
+boxplot(x,outline = FALSE)</code></pre>
+<p><img src="wykrespudelkowy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Przy dwóch zmiennych możemy użyć poniższej składni:</p>
 <pre class="r"><code>boxplot(mpg~cyl,data=mtcars, main=&quot;Dane o samochodach&quot;, 
     xlab=&quot;Liczba cylindrów&quot;, ylab=&quot;Mile na galon&quot;)</code></pre>
-<p><img src="wykrespudelkowy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="wykrespudelkowy_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Parametr <code>horizontal=TRUE</code> zmienia orientację na poziomą. <code>notch</code>- dodaje “zwężenie”.</p>
 <pre class="r"><code>x&lt;-c(3,4,5,6,7,3,5,6,7,3,1,2,10,3,20)
 boxplot(x, horizontal = TRUE, notch=TRUE)</code></pre>
-<p><img src="wykrespudelkowy_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="wykrespudelkowy_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 
 
