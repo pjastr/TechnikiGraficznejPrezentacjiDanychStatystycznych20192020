@@ -1,0 +1,219 @@
+---
+title: "Dzień 2 - Kolory"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Kolory
+
+Składnia: `gray.colors(num_colors, start=value, end=value, gamma=value)`. 
+
+0 = czerń i 1 = biel (domyślnie start=0.3 i end=0.9).
+
+```{r echo=FALSE}
+old_par <- par(no.readonly = TRUE)	# save current graphical parameters
+par(mar=c(3, 3, 3, 3))				# set margins to three lines
+	
+									# arguments for plot described in plot(), 
+									# plot.default(), and par()
+plot(0,0, type="n", xlim=c(0,32), ylim=c(1,6), xlab=NA, ylab=NA, axes=FALSE, bty="n")
+title(main="gray.colors(n, start=1, end=0)", line=0)
+for (i in 1:5) {					# loop through five versions of the vector
+	div <- 2^i						# number of divisions in this palette
+	col_vec <- gray.colors(div, start=0, end=1)
+	for(k in 1:div) {
+		x_left <- (32/div)*(k-1)
+		x_right <- (32/div)*(k)
+		y_bottom <- i
+		y_top <- i+0.8
+		rect(x_left, y_bottom, x_right, y_top, col=col_vec[k],  border="gray60")
+	}
+	text(0, i-0.08, paste("n =", div), col="gray40", adj=0, cex=0.7)
+} 
+par(old_par)
+```
+
+Składnia: `heat.colors(num_colors, alpha=value)`.
+
+```{r echo=FALSE}
+old_par <- par(no.readonly = TRUE)	# save current graphical parameters
+par(mar=c(3, 3, 3, 3))				# set margins to three lines
+	
+									# arguments for plot described in plot(), 
+									# plot.default(), and par()
+plot(0,0, type="n", xlim=c(0,32), ylim=c(1,6), xlab=NA, ylab=NA, axes=FALSE, bty="n")
+title(main="heat.colors(n)", line=0)
+for (i in 1:5) {					# loop through five versions of the color vector
+	div <- 2^i						# number of divisions in this palette
+	col_vec <- heat.colors(div)
+	for(k in 1:div) {
+		x_left <- (32/div)*(k-1)
+		x_right <- (32/div)*(k)
+		y_bottom <- i
+		y_top <- i+0.8
+		rect(x_left, y_bottom, x_right, y_top, col=col_vec[k],  border="gray60")
+	}
+	text(0, i-0.08, paste("n =", div), col="gray40", adj=0, cex=0.7)
+} 
+par(old_par)
+```
+
+Z przezroczystością:
+
+```{r echo=FALSE}
+old_par <- par(no.readonly = TRUE)	# save current graphical parameters
+par(mar=c(3, 3, 3, 3))				# set margins to three lines
+	
+									# arguments described in plot(), plot.default(), par()
+plot(0,0, type="n", xlim=c(0,16), ylim=c(1,6), xlab=NA, ylab=NA, axes=FALSE, bty="n")
+title(main="heat.colors(16) z parametrem alpha", line=0)
+alpha_vector <- c(1.0, 0.8, 0.6, 0.4, 0.2)
+for (i in 1:5) {					# make five versions of the color vector
+	col_vec <- heat.colors(16, alpha=alpha_vector[i])
+	
+	rect(-1, i+0.2, 17, i+0.6, col="gray30", border=NA) 
+	
+	for(k in 1:16) {
+		x_left <- k-1
+		x_right <- k
+		y_bottom <- i
+		y_top <- i+0.8
+		rect(x_left, y_bottom, x_right, y_top, col=col_vec[k],  border="gray60")
+	}
+	info_text <- paste("alpha =", alpha_vector[i])
+	text(0, i-0.08, info_text, col="gray40", adj=0, cex=0.7)
+} 
+par(old_par)
+```
+
+Pozostałe możliwości:
+
+```{r echo=FALSE}
+old_par <- par(no.readonly = TRUE)	# save current graphical parameters
+par(xaxt="n", yaxt="n")				# do not draw axes
+par(mar=c(3, 3, 3, 3))				# set margins
+									# arguments described in plot(), plot.default(), par()
+plot(0,0, type="n", xlim=c(0,16), ylim=c(1,6), xlab=NA, ylab=NA, axes=FALSE, bty="n")
+title(main="Funkcje do tworzenia palet kolorów", line=0)
+title(main=list("16 kolorów w każdej palecie", col="gray40", cex=0.8), line=-1)
+color_vector <- c("rainbow(16)", "topo.colors(16)", "terrain.colors(16)", "cm.colors(16)", "heat.colors(16)")
+for (i in 1:5) {					# make five versions of the vector of colors
+	col_vec <- eval(parse(text=color_vector[i]))  # evaluates string as function
+	for(k in 1:16) {
+		x_left <- k-1
+		x_right <- k
+		y_bottom <- i
+		y_top <- i+0.8
+		rect(x_left, y_bottom, x_right, y_top, col=col_vec[k], border="gray60")
+	}
+	text(0, i-0.08, color_vector[i], col="gray40", adj=0, cex=0.7)
+} 
+par(old_par)
+```
+
+`rainbow` z określonym początkiem i końcem:
+
+```{r echo=FALSE}
+old_par <- par(no.readonly = TRUE)	# save current graphical parameters
+par(xaxt="n", yaxt="n")				# do not draw axes
+par(mar=c(3, 3, 3, 3))				# set margins
+	
+plot(c(0,16), c(1,6), type="n", xaxp=c(0,16,1), yaxp=c(1,6,1), xlab=NA, ylab=NA, bty="n")
+title(main="rainbow(16) z podzakresem", line=0)
+									# vectors of five pairs of start/end values
+start_vector <- c(0, 0.10, 0.5, 0.65, 0.85)
+end_vector <- c(0.15, 0.25, 0.6, 1, 1)
+for (i in 1:5) {					# make five versions of the subrange
+	col_vec <- rainbow(16, start=start_vector[i], end=end_vector[i])
+	for(k in 1:16) {
+		x_left <- k-1
+		x_right <- k
+		y_bottom <- i
+		y_top <- i+0.8
+		rect(x_left, y_bottom, x_right, y_top, col=col_vec[k],  border="gray60")
+	}
+	text(0, i-0.08, paste("start=", start_vector[i], ", end=", end_vector[i]), 
+	    col="gray40", adj=0, cex=0.7)
+} 
+par(old_par)
+```
+
+Składnia: `hsv(h=value, s=value, v=value, gamma=value, alpha=value)`. Opis na wiki - [link](https://pl.wikipedia.org/wiki/HSV_(grafika)).
+
+```{r echo=FALSE}
+old_par <- par(no.readonly = TRUE)	# save current graphical parameters
+par(xaxt="n", yaxt="n")				# do not draw axes
+par(mar=c(3, 3, 3, 3))				# set margins
+	
+plot(c(0,16), c(1,6), type="n", xaxp=c(0,16,1), yaxp=c(1,6,1), xlab=NA, ylab=NA, bty="n")
+title(main="hsv()", line=0)
+title(main=list("hue, saturation, value", col="gray40", cex=0.8), line=-1)
+colors5 <- "hsv(h=k/16, s=1, v=1)"
+info5 <- "hue 0 to 1, saturation of 1, value of 1"
+colors4 <- "hsv(h=k/16, s=0.5, v=1)"
+info4 <- "hue 0 to 1, saturation of 0.5, value of 1"
+colors3 <- "hsv(h=k/16, s=1, v=0.5)"
+info3 <- "hue 0 to 1, saturation of 1, value of 0.5"
+colors2 <- "hsv(h=1, s=k/16, v=1)"
+info2 <- "hue of 1, saturation 0 to 1, value of 1"
+colors1 <- "hsv(h=1, s=1, v=k/16)"
+info1 <- "hue of 1, saturation of 1, value 0 to 1"
+colors <- list(colors1, colors2, colors3, colors4, colors5)
+info <- list(info1, info2, info3, info4, info5)
+for (i in 1:5) {					# make five different versions
+	col_vec <- parse(text=colors[i])
+	for(k in 1:16) {
+		color <- eval(col_vec)		# interpret string as a function
+		x_left <- k-1
+		x_right <- k
+		y_bottom <- i
+		y_top <- i+0.8
+		rect(x_left, y_bottom, x_right, y_top, col=color, border="gray60")
+	}
+	text(0, i-0.08, info[i], col="gray40", adj=0, cex=0.7)
+} 
+par(old_par)
+```
+
+## Przykłady
+
+```{r}
+a<- c(23,3,4,15,8,2,11,7,3,8,4,5)
+barplot(a, col=rainbow(length(a)))
+```
+
+```{r}
+a<- c(23,3,4,15,8,2,11,7,3,8,4,5)
+barplot(a, col=heat.colors(length(a), alpha=0.5))
+```
+
+```{r}
+a<- c(23,3,4,15,8,2,11,7,3,8,4,5)
+barplot(a, col=gray.colors(length(a), start=0.5, end=0.9))
+```
+
+```{r}
+a<- c(23,3,4,15,8,2,11,7,3,8,4,5)
+barplot(a,col = topo.colors(length(a)))
+```

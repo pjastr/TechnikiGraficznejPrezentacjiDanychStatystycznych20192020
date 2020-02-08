@@ -1,0 +1,41 @@
+---
+title: "Dzień 2 - Ćwiczenie"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Ćwiczenie
+
+
+Wykonaj poniższe czynności:
+
+* narysuj wykres funkcji $y=\frac{5x+\sin(x)}{x}$ na przedziale $[0,30]$.
+* zmniejsz przedział do przedziału $[2,30]$.
+* przemyśl jaki warto ustalić zakres dla osi y
+* dodaj tytuł i podtytuł do wykresu
+* dodaj asymptotę do wykresu (innymi słowy dorysuj prostą $y=5$ linią przerywaną).
+* zmień orientację liczb na osi y
+* dodaj legendę
+* dodaj tekst do wykresu
+

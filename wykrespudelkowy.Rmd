@@ -1,0 +1,46 @@
+---
+title: "Dzień 2 - Wykres pudełkowy"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Wykres pudełkowy
+
+```{r}
+x<-c(3,4,5,6,7,8,1,2,3,14)
+boxplot(x)
+```
+
+Przy dwóch zmiennych możemy użyć poniższej składni:
+
+```{r}
+boxplot(mpg~cyl,data=mtcars, main="Dane o samochodach", 
+  	xlab="Liczba cylindrów", ylab="Mile na galon")
+```
+
+Parametr `horizontal=TRUE` zmienia orientację na poziomą. `notch`- dodaje "zwężenie". 
+```{r}
+x<-c(3,4,5,6,7,3,5,6,7,3,1,2,10,3,20)
+boxplot(x, horizontal = TRUE, notch=TRUE)
+```

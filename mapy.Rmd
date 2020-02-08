@@ -1,0 +1,62 @@
+---
+title: "Dzień 2 - Mapyy"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Mapy
+
+https://gadm.org/maps.html
+
+```{r}
+library(raster)
+library(sp)
+map1<- getData('GADM', country='POL', level=1)
+plot(map1)
+```
+
+```{r}
+map1<- getData('GADM', country='POL', level=1)
+myColours <- rep("forestgreen", length(map1))
+myColours[5] <- "red"
+plot(map1, col = myColours, border = 'grey')
+```
+
+```{r}
+map1<- getData('GADM', country='POL', level=1)
+myColours <- rep("forestgreen", length(map1))
+myColours[5] <- "red"
+plot(map1, col = myColours, border = 'grey')
+legend("left",c("Opcja 1","Opcja 2"),fill=c("forestgreen","red"))
+```
+
+
+```{r}
+map1<- getData('GADM', country='POL', level=2)
+map2 <- map1[map1$NAME_1=="Warmińsko-Mazurskie",]
+myColours <- rep("blue", length(map2))
+myColours[3] <- "yellow"
+myColours[7] <- "brown"
+plot(map2,col = myColours, border = 'pink')
+```

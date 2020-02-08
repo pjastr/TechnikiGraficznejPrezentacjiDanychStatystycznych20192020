@@ -94,3 +94,10 @@ boxplot(mtcars$mpg~mtcars$cyl,
    
 legend("bottomleft", inset=.02, title="Number of Cylinders",
    c("4","6","8"), fill=topo.colors(3), horiz=TRUE, cex=0.8)
+```
+
+Ćwiczenie. Spróbuj odzworować poniższy wykres. Dane są w pliku pbb.xlsx.
+http://wmii.uwm.edu.pl/~piojas/wp-content/uploads/2020/02/pkb.xlsx
+
+![](pkb.png)
+

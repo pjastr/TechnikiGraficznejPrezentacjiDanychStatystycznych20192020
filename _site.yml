@@ -21,14 +21,30 @@ navbar:
           href: punkttekst.html
         - text: "Legenda"
           href: legenda.html
+    - text: "Dzień 2"
+      menu:
+        - text: "Ćwiczenie"
+          href: cw.html
+        - text: "Trochę teorii"
+          href: teoria.html
+        - text: "Legenda"
+          href: legenda.html
         - text: "Wykres słupkowy"
           href: wykreslupkowy.html
         - text: "Histogram"
           href: histogram.html
         - text: "Wykres kołowy"
           href: wykreskolowy.html
-        - text: "Wykres kropkowy"
-          href: wykreskropkowy.html
         - text: "Osie"
           href: osie.html
+        - text: "Ćwiczenie 2"
+          href: cw2.html
+        - text: "Kolory"
+          href: kolory.html
+        - text: "Wykres pudełkowy"
+          href: wykrespudelkowy.html
+        - text: "Mapy"
+          href: mapy.html
+        - text: "Parametry strony"
+          href: parametrystrony.html
 

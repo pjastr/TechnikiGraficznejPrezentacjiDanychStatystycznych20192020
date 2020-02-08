@@ -1,0 +1,42 @@
+---
+title: "Dzień 2 - Trochę teorii..."
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Trochę teorii
+
+Metody prezentacji danych statystycznych:
+
+* forma tabelaryczna - przestawienie danych w tabelach lub tabelach statystycznych (szeregi rozdzielcze).
+* forma graficzna - przedstawienie danych w formie wykresów.
+* forma opisowa - przedstawienie danych w formie tekstu.
+
+## Jak nie tworzyć wykresów?
+
+http://smarterpoland.pl/index.php/2019/12/najgorszy-wykres-2019/
+
+## Jak je tworzyć?
+
+Dyskusja.

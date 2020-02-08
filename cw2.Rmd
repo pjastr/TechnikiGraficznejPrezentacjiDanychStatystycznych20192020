@@ -1,0 +1,47 @@
+---
+title: "Dzień 2 - Ćwiczenie 2"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Ćwiczenie
+
+
+Wprowadź poniższy kod:
+
+```{r}
+library(MASS)
+baza<-survey
+head(baza)
+```
+
+Stwórz co najmniej dwa wykresy do wybranych kolumn. 
+Opis bazy jest dostępny tutaj - [link](https://www.rdocumentation.org/packages/MASS/versions/7.3-51.1/topics/survey).
+
+Zrób oddzielny wykres pobierający dane tylko osób leworęcznych.
+Wskazówka: 
+
+```
+l<-survey[survey$W.Hnd=="Left",]
+```
