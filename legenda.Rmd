@@ -101,3 +101,4 @@ http://wmii.uwm.edu.pl/~piojas/wp-content/uploads/2020/02/pkb.xlsx
 
 ![](pkb.png)
 
+Pomocna może być funkcja `abline` - http://www.sthda.com/english/wiki/abline-r-function-an-easy-way-to-add-straight-lines-to-a-plot-using-r-software
