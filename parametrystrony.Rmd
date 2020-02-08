@@ -334,9 +334,10 @@ mtext("Enhanced Scatterplot", side=3, outer=TRUE, line=-3)
 
 Wykres słupkowy na mapie:
 ```{r}
+library(raster)
 library(sp)
-gadm <- readRDS("gadm36_POL_1_sp.rds")
-plot(gadm)
+map1<- getData('GADM', country='POL', level=1)
+plot(map1)
 par(plt=c(0.57,0.62,0.7,0.8),new=TRUE)
 wybory<-c(33,22,11)
 barplot(wybory, col=rainbow(3), axes=FALSE)

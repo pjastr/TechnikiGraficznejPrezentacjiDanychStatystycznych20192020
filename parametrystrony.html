@@ -749,9 +749,11 @@ boxplot(mtcars$mpg, axes=FALSE)
 mtext(&quot;Enhanced Scatterplot&quot;, side=3, outer=TRUE, line=-3)</code></pre>
 <p><img src="parametrystrony_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Wykres słupkowy na mapie:</p>
+<pre class="r"><code>library(raster)</code></pre>
+<pre><code>## Loading required package: sp</code></pre>
 <pre class="r"><code>library(sp)
-gadm &lt;- readRDS(&quot;gadm36_POL_1_sp.rds&quot;)
-plot(gadm)
+map1&lt;- getData(&#39;GADM&#39;, country=&#39;POL&#39;, level=1)
+plot(map1)
 par(plt=c(0.57,0.62,0.7,0.8),new=TRUE)
 wybory&lt;-c(33,22,11)
 barplot(wybory, col=rainbow(3), axes=FALSE)</code></pre>
