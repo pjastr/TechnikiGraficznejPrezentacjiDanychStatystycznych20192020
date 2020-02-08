@@ -32,6 +32,21 @@ x<-c(3,4,5,6,7,8,1,2,3,14)
 boxplot(x)
 ```
 
+Ale:
+
+```{r}
+summary(x)
+```
+
+Trzeba zrobić to inaczej:
+
+```{r}
+x<-c(3,4,5,6,7,8,1,2,3,14)
+wykres<-boxplot(x)
+wykres
+summary(wykres$stats)
+```
+
 Przy dwóch zmiennych możemy użyć poniższej składni:
 
 ```{r}
