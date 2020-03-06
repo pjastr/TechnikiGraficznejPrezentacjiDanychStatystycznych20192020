@@ -47,4 +47,7 @@ navbar:
           href: mapy.html
         - text: "Parametry strony"
           href: parametrystrony.html
-
+    - text: "Dzień 3"
+      menu:
+        - text: "Wykresy wielowymiarowe"
+          href: wykresywielowymiarowe.html

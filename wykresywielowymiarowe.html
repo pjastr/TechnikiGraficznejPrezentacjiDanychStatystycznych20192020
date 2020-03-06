@@ -11,7 +11,7 @@
 
 
 
-<title>Dzień 2 - Mapyy</title>
+<title>Dzień 3 - wykresy wielowymiarowe</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -455,7 +455,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Dzień 2 - Mapyy</h1>
+<h1 class="title toc-ignore">Dzień 3 - wykresy wielowymiarowe</h1>
 
 </div>
 
@@ -474,35 +474,68 @@ div.tocify {
 }
 
 </style>
-<div id="mapy" class="section level1">
-<h1>Mapy</h1>
-<p><a href="https://gadm.org/maps.html" class="uri">https://gadm.org/maps.html</a></p>
-<pre class="r"><code>library(raster)</code></pre>
-<pre><code>## Warning: package &#39;raster&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## Loading required package: sp</code></pre>
-<pre><code>## Warning: package &#39;sp&#39; was built under R version 3.6.3</code></pre>
-<pre class="r"><code>library(sp)
-map1&lt;- getData(&#39;GADM&#39;, country=&#39;POL&#39;, level=1)
-plot(map1)</code></pre>
-<p><img src="mapy_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>map1&lt;- getData(&#39;GADM&#39;, country=&#39;POL&#39;, level=1)
-myColours &lt;- rep(&quot;forestgreen&quot;, length(map1))
-myColours[5] &lt;- &quot;red&quot;
-plot(map1, col = myColours, border = &#39;grey&#39;)</code></pre>
-<p><img src="mapy_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code>map1&lt;- getData(&#39;GADM&#39;, country=&#39;POL&#39;, level=1)
-myColours &lt;- rep(&quot;forestgreen&quot;, length(map1))
-myColours[5] &lt;- &quot;red&quot;
-plot(map1, col = myColours, border = &#39;grey&#39;)
-legend(&quot;left&quot;,c(&quot;Opcja 1&quot;,&quot;Opcja 2&quot;),fill=c(&quot;forestgreen&quot;,&quot;red&quot;))</code></pre>
-<p><img src="mapy_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<pre class="r"><code>map1&lt;- getData(&#39;GADM&#39;, country=&#39;POL&#39;, level=2)
-map2 &lt;- map1[map1$NAME_1==&quot;Warmińsko-Mazurskie&quot;,]
-myColours &lt;- rep(&quot;blue&quot;, length(map2))
-myColours[3] &lt;- &quot;yellow&quot;
-myColours[7] &lt;- &quot;brown&quot;
-plot(map2,col = myColours, border = &#39;pink&#39;)</code></pre>
-<p><img src="mapy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="wykresy-wielowymiarowe" class="section level1">
+<h1>Wykresy wielowymiarowe</h1>
+<div id="wykres-punktowy-dla-trzech-zmiennych" class="section level2">
+<h2>Wykres punktowy dla trzech zmiennych</h2>
+<p>Uwaga: warto zwrócić uwagę na parametry kolorów.</p>
+<pre class="r"><code>library(MASS)
+head(ships)</code></pre>
+<pre><code>##   type year period service incidents
+## 1    A   60     60     127         0
+## 2    A   60     75      63         0
+## 3    A   65     60    1095         3
+## 4    A   65     75    1095         4
+## 5    A   70     60    1512         6
+## 6    A   70     75    3353        18</code></pre>
+<pre class="r"><code>plot(ships$incidents,ships$service,col=ships$type, pch=16)
+legend(&quot;topleft&quot;,legend = levels(ships$type), col = c(1:5), pch=16)</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="baza-iris" class="section level2">
+<h2>Baza <code>iris</code></h2>
+<pre class="r"><code>data(iris)
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code>plot(iris$Sepal.Length, iris$Petal.Length, col = iris$Species)</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>plot(iris$Sepal.Length, iris$Petal.Length, col = iris$Species, pch = 16)</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<pre class="r"><code>plot(iris$Sepal.Length, iris$Petal.Length,
+     col = iris$Species,
+     pch = 16,
+     cex = 2)
+legend(x = 4.5, y = 7, legend = levels(iris$Species), col = c(1:3), pch = 16)</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<pre class="r"><code>pairs(iris)</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+</div>
+<div id="wykres-mozaikowy" class="section level2">
+<h2>Wykres mozaikowy</h2>
+<p>W tym typie wykresu podtrzebujemy zwykle macierzy/tabeli.</p>
+<pre class="r"><code>choroby&lt;-matrix(c(34,12,22,18),ncol=2,byrow=TRUE)
+colnames(choroby) &lt;- c(&quot;M&quot;,&quot;K&quot;)
+rownames(choroby)&lt;- c(&quot;GDO&quot;, &quot;DDO&quot;)
+mosaicplot(choroby, color = rainbow(2))</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>mosaicplot(HairEyeColor, col=heat.colors(2))</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="wykres-w-perspektywie" class="section level2">
+<h2>Wykres w perspektywie</h2>
+<pre class="r"><code>x &lt;- seq(-10, 10, length = 30) 
+y &lt;- x  
+f &lt;- function(x, y) {r &lt;- sqrt(x ^ 2 + y ^ 2); 10 * sin(r) / r}
+z &lt;- outer(x, y, f) 
+persp(x, y, z)</code></pre>
+<p><img src="wykresywielowymiarowe_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
 </div>
 
 

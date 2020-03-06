@@ -431,6 +431,18 @@ div.tocify {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Dzień 3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="wykresywielowymiarowe.html">Wykresy wielowymiarowe</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -750,7 +762,9 @@ mtext(&quot;Enhanced Scatterplot&quot;, side=3, outer=TRUE, line=-3)</code></pre
 <p><img src="parametrystrony_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Wykres słupkowy na mapie:</p>
 <pre class="r"><code>library(raster)</code></pre>
+<pre><code>## Warning: package &#39;raster&#39; was built under R version 3.6.3</code></pre>
 <pre><code>## Loading required package: sp</code></pre>
+<pre><code>## Warning: package &#39;sp&#39; was built under R version 3.6.3</code></pre>
 <pre class="r"><code>library(sp)
 map1&lt;- getData(&#39;GADM&#39;, country=&#39;POL&#39;, level=1)
 plot(map1)
