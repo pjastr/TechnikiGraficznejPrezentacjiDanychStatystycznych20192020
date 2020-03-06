@@ -29,7 +29,7 @@ output:
 
 * Liczba godzin: 10 godz. (ćwiczenia).
 * Liczba punktów ECTS: 1.
-* Forma zaliczenia: zaliczenie na ocenę.
+* Forma zaliczenia: zaliczenie.
 * Konsultacje: terminy i maile na stronie w domenie WMiI - [link](http://wmii.uwm.edu.pl/~piojas/).
 
 ## Treści zajęć
